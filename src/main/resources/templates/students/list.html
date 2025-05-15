@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Учні</title></head>
+<body>
+    <h1>Список учнів</h1>
+    <a href="/students/create">Додати учня</a>
+    <ul>
+        <li th:each="student : ${students}">
+            <span th:text="${student.name}"></span> |
+            <a th:href="@{/students/{id}(id=${student.id})}">Редагувати</a>
+            <form th:action="@{/students/{id}/delete(id=${student.id})}" method="post" style="display:inline;">
+                <button type="submit">Видалити</button>
+            </form>
+
+        </li>
+    </ul>
+</body>
+<p><a th:href="@{/}">← Назад на головну</a></p>
+</html>

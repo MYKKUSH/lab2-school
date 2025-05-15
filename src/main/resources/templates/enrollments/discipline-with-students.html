@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Записи на дисципліни</title></head>
+<body>
+<h1>Записи на дисципліни</h1>
+
+<table>
+  <tr>
+    <th>Учень</th>
+    <th>Дисципліна</th>
+    <th>Дія</th>
+  </tr>
+  <tr th:each="enrollment : ${enrollments}">
+    <td th:text="${enrollment.student.name}"></td>
+    <td th:text="${enrollment.discipline.title}"></td>
+    <td>
+      <form th:action="@{'/enrollments/' + ${enrollment.id} + '/delete'}" method="post" style="display:inline">
+        <button type="submit" onclick="return confirm('Ви впевнені, що хочете видалити цей запис?')">Видалити</button>
+      </form>
+    </td>
+  </tr>
+</table>
+
+<p><a th:href="@{/}">← Назад на головну</a></p>
+</body>
+</html>

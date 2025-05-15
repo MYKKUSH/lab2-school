@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Дисципліни</title></head>
+<body>
+<h1>Дисципліни</h1>
+<a th:href="@{/disciplines/new}">Створити нову</a>
+<ul>
+    <li th:each="d : ${disciplines}">
+        <span th:text="${d.title}">Назва</span>
+        <a th:href="@{'/disciplines/' + ${d.id} + '/edit'}">Редагувати</a>
+        <form th:action="@{'/disciplines/' + ${d.id} + '/delete'}" method="post" style="display:inline">
+            <button type="submit">Видалити</button>
+        </form>
+    </li>
+</ul>
+<p><a th:href="@{/}">← Назад на головну</a></p>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Форма дисципліни</title></head>
+<body>
+<h1>Форма дисципліни</h1>
+<form th:action="@{/disciplines}" th:object="${discipline}" method="post">
+  <input type="hidden" th:field="*{id}" />
+  Назва: <input type="text" th:field="*{title}" required />
+  <button type="submit">Зберегти</button>
+</form>
+<p><a th:href="@{/}">← Назад на головну</a></p>
+</body>
+</html>
