@@ -4,20 +4,17 @@
 <body>
 <h1>Форма учня</h1>
 
-<!-- Форма збереження учня -->
 <form th:action="@{/students}" th:object="${student}" method="post">
     <input type="hidden" th:field="*{id}" />
     Ім'я: <input type="text" th:field="*{name}" required /><br/>
     <button type="submit">Зберегти</button>
 </form>
 
-<!-- Список дисциплін, на які записаний -->
 <h2>Записи на дисципліни</h2>
 <ul th:if="${student.enrollments != null}" th:each="e : ${student.enrollments}">
     <li th:text="${e.discipline.title}"></li>
 </ul>
 
-<!-- Форма додавання дисципліни -->
 <h3>Додати дисципліну</h3>
 <form th:action="@{/enrollments/add}" method="post">
     <input type="hidden" name="studentId" th:value="${student.id}" />
